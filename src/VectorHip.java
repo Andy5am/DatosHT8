@@ -1,14 +1,14 @@
+import java.util.PriorityQueue;
 import java.util.Vector;
 
-public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
+public class VectorHip<E extends Comparable<E>>extends PriorityQueue<E> {
     protected Vector<E> data; // the data, kept in heap order
-
-    public VectorHeap() {
+    public VectorHip() {
         // post: constructs a new priority queue
         data = new Vector<E>();
     }
 
-    public VectorHeap(Vector<E> v){
+    public VectorHip(Vector<E> v){
         // post: constructs a new priority queue from an unordered vector
         int i;
         data = new Vector<E>(v.size()); // we know ultimate size
@@ -49,6 +49,13 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         data.set(leaf,value);
     }
 
+    /**public void add(E value) {
+     // pre: value is non-null comparable
+     // post: value is added to priority queue
+     data.add(value);
+     percolateUp(data.size()-1);
+     }**/
+
     protected void pushDownRoot(int root) {
         // pre: 0 <= root < size
         // post: moves node at index root down
@@ -78,7 +85,6 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         }
     }
 
-    @Override
     public E getFirst() {
         return data.firstElement();
     }
@@ -91,17 +97,16 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         data.setSize(data.size()-1);
         if (data.size()>1)
             pushDownRoot(0);
-            return minVal;
+        return minVal;
 
     }
 
-    @Override
-    public void add(E value) {
+    public boolean add(E value) {
         data.add(value);
         percolateUp(data.size()-1);
+        return false;
     }
 
-    @Override
     public boolean isEmpty() {
         if (data.size()==0){
             return true;
@@ -110,15 +115,11 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         }
     }
 
-    @Override
     public int size() {
         return data.size();
     }
-
-    @Override
+    
     public void clear() {
 
     }
-
-
 }
