@@ -10,11 +10,18 @@ import java.util.Scanner;
 import java.util.Vector;
 import java.util.stream.Stream;
 
+/**
+ * @author Andy Castillo 18040
+ * @author Cristina Bautista 161260
+ * @version 03/04/2019
+ * Esta es la clase main
+ */
 public class Main {
     public static void main(String[]args){
 
         Vector lista = new Vector();
 
+        //Leer archivo
         ArrayList<String> archivo = new ArrayList<String>();
         try {
             Stream<String> lines = Files.lines(
@@ -26,14 +33,19 @@ public class Main {
             System.out.println("Error!");
         }
 
+        //Agregar a una lista
         for (int i =0; i<archivo.size();i++){
             String [] pacientes= archivo.get(i).split(", ");
+            //Se agregan los pacientes al vector
             Paciente paciente = new Paciente(pacientes[0],pacientes[1],pacientes[2]);
             lista.add(paciente);
         }
 
+        //Se crea la PriorityQueue
         PriorityQueue listaPacientes = new PriorityQueue(lista);
         boolean continuar = true;
+
+        //El menu
         while (continuar){
 
             System.out.println("\nBienvenido a su lista de espera de pacientes");
@@ -47,14 +59,18 @@ public class Main {
             if (respuesta.equals("1")){
 
                 if (!listaPacientes.isEmpty()) {
+                    //Para que imprima los pacientes que necesiten de atencion de acuerdo a prioridad
                     System.out.println(listaPacientes.remove());
                 }else {
+                    //Dice cuando ya no hayan mas pacientes
                     System.out.println("No hay mas pacientes Doc");
                 }
+                //opcion para que salga
             } else if (respuesta.equals("2")) {
                 continuar = false;
                 System.out.println("Gran trabajo doc");
             } else {
+                //Por si no escribe una de las opciones habiles
                 System.out.println("Opcion invalida");
             }
         }

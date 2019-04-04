@@ -1,3 +1,10 @@
+/**
+ * @author Andy Castillo 18040
+ * @author Cristina Bautista 161260
+ * @version 03/04/2019
+ * @param <E>
+ * Esta es la interfaz de Priority Queue que obtuvimos de los archivos de Canvas
+ */
 public interface PriorityQueue<E extends Comparable<E>> {
     public E getFirst();
     // pre: !isEmpty()
