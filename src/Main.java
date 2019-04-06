@@ -34,9 +34,12 @@ public class Main {
         //Agregar a una lista
         for (int i =0; i<archivo.size();i++){
             String [] pacientes= archivo.get(i).split(", ");
+            System.out.println(archivo);
             //Se agregan los pacientes al vector
             Paciente paciente = new Paciente(pacientes[0],pacientes[1],pacientes[2]);
+            System.out.println(paciente);
             lista.add(paciente);
+            System.out.println(lista);
         }
         Scanner input = new Scanner(System.in);
 
